@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export const UseLocalStorege = (key, inicial) => {
+export const useLocalStorege = (key, inicial) => {
   const [state, setState] = useState(() => {
     const local = window.localStorage.getItem(key);
     return local ? local : inicial;
