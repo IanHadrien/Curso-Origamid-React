@@ -1,5 +1,6 @@
 // import "./css/global.css";
 import { useState } from "react";
+import { Validacao } from "./aulas/validacao";
 import { DesafioInput } from "./desafios/desafio-input";
 import { DesafioMultiplos } from "./desafios/desafio-multiplos";
 import { Checkbox } from "./form/Checkbox";
@@ -19,8 +20,8 @@ function App() {
       {/* <Input /> */}
       {/* <DesafioInput /> */}
       {/* <DesafioMultiplos /> */}
-      <form>
-        <Input 
+      <div>
+        {/* <Input 
           id="nome" 
           label="Nome" 
           value={nome} 
@@ -32,7 +33,7 @@ function App() {
           label="Email" 
           value={email} 
           setValue={setEmail}
-        />
+        /> */}
 
         <Select 
           options={["Smartphone", "Mobile"]}
@@ -51,7 +52,11 @@ function App() {
           value={tecnologias} 
           setValue={setTecnologias}
         />
-      </form>
+
+        {/* Validação */}
+        <br />
+        <Validacao />
+      </div>
     </div>
   );
 }
