@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Radio } from '../form/Radio';
+import { ValidationResponse } from './validationResponse';
 
 const perguntas = [
   {
@@ -35,10 +37,55 @@ const perguntas = [
   },
 ];
 
+let response = [];
+
 export const AppForm = () => {
+  const [option, setOption] = useState('');
+  const [pergunta, setPergunta] = useState(perguntas[0]);
+  const [contador, setCont] = useState(1);
+  const [respostas, setRespostas] = useState(0);
+
+  function nextOption(id) {
+    console.log(id);
+    console.log(option);
+
+    perguntas.map((r) => {
+      if(r.id === id) {
+        if( r.resposta === option ) {
+          setRespostas(respostas + 1);
+        }
+      }
+    });
+
+    if (contador <= perguntas.length-1) {
+      setPergunta(perguntas[contador]);
+      setCont(contador + 1);
+      response = [...response, option];
+      console.log(response);
+    } else {
+      response = [...response, option];
+      setCont(contador + 1);
+    }
+  }
+
   return (
     <div>
+      { contador <= 4 &&
+      <div>
+        <p>{pergunta.pergunta}</p>
+        <Radio
+          options={pergunta.options}
+          value={option}
+          setValue={setOption}
+        />
+        <br />
+        <button onClick={() => nextOption(pergunta.id)}>
+          Proximo
+        </button>
+      </div>
+      }
 
+      { contador > 4 && <ValidationResponse response={respostas} />}
     </div>
   )
 }

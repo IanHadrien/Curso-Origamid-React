@@ -1,6 +1,7 @@
 // import "./css/global.css";
 import { useState } from "react";
 import { Validacao } from "./aulas/validacao";
+import { AppForm } from "./desafioForm/appForm";
 import { DesafioInput } from "./desafios/desafio-input";
 import { DesafioMultiplos } from "./desafios/desafio-multiplos";
 import { Checkbox } from "./form/Checkbox";
@@ -35,7 +36,7 @@ function App() {
           setValue={setEmail}
         /> */}
 
-        <Select 
+        {/* <Select 
           options={["Smartphone", "Mobile"]}
           value={produto}
           setValue={setProduto}
@@ -52,10 +53,10 @@ function App() {
           value={tecnologias} 
           setValue={setTecnologias}
         />
-
-        {/* Validação */}
         <br />
-        <Validacao />
+        <Validacao /> */}
+
+        <AppForm />
       </div>
     </div>
   );
