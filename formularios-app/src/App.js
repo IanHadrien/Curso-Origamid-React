@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Validacao } from "./aulas/validacao";
 import { AppForm } from "./desafioForm/appForm";
+import { Solucao } from "./desafioForm/solucao";
 import { DesafioInput } from "./desafios/desafio-input";
 import { DesafioMultiplos } from "./desafios/desafio-multiplos";
 import { Checkbox } from "./form/Checkbox";
@@ -56,7 +57,11 @@ function App() {
         <br />
         <Validacao /> */}
 
-        <AppForm />
+        {/* Solução feita por mim */}
+        {/* <AppForm /> */}
+
+        {/* Solução 2 */}
+        <Solucao />
       </div>
     </div>
   );
