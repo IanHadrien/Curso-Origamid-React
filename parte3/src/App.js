@@ -1,9 +1,10 @@
-import { AppSlides } from "./slides/AppSlides";
+import "./global.css";
+import { AppDesafio1 } from "./desafio1/AppDesafio1";
 
 function App() {
   return (
     <div>
-      <AppSlides />
+      <AppDesafio1 />
     </div>
   );
 }
