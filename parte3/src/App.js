@@ -1,4 +1,5 @@
 import "./global.css";
+import "./App.css";
 import { AppDesafio1 } from "./desafio1/AppDesafio1";
 
 function App() {

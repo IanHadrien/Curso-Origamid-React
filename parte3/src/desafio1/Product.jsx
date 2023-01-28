@@ -1,28 +1,46 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 export const Product = () => {
-  const [product, setProduct] = useState([]);
-  const location = useLocation();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const { id } = useParams();
 
   async function getProduct(id) {
-    const res = await fetch(`https://ranekapi.origamid.dev/json/api/produto/${id}`);
-    const json = await res.json();
-    console.log(json);
-    setProduct(json);
+    try {
+      setLoading(true);
+      const res = await fetch(`https://ranekapi.origamid.dev/json/api/produto/${id}`);
+      const json = await res.json();
+      setProduct(json);
+    } catch (erro) {
+      setError('Um erro ocorreu');
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
-    const pathname = location.pathname.split('/');
-    getProduct(pathname[pathname.length - 1]);
-  }, [])
+    getProduct(id);
+  }, [id])
 
+  if(loading) return <div className='loading'></div>;
+  if(error) return <p>{error}</p>
+  if(product === null) return null;
   return (
     <div className='grid grid-cols-2 gap-4'>
       
       <div className='text-right'>
-        <img className='w-32' src={product.fotos} />
+        {product.fotos.map((foto, index) => {
+          return (
+            <img
+              key={index} 
+              className='w-32' 
+              src={foto.src} 
+            />
+          )
+        })}
       </div> 
       <div className='text-left'>
         <h2>{product.nome}</h2>
